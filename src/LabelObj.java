@@ -2,13 +2,13 @@ import java.io.*;
 
 public class LabelObj {
 
-    public Boolean labellingFunction(String fileName, String labellingFunctionFileName) {
+    public Boolean labellingProgram(String fileName, String labelFileName) {
         File oldFile = new File(fileName);
         if (!oldFile.exists()) {
-            System.out.println("程序文件不存在");
+            System.out.println("program file not found");
             return false;
         }
-        File labellingFunctionFile = new File(labellingFunctionFileName);
+        File labellingFunctionFile = new File(labelFileName);
         BufferedReader reader = null;
         if (!labellingFunctionFile.exists()) {
             try {
@@ -25,9 +25,10 @@ public class LabelObj {
             int line = 1;
             while ((tempString = reader.readLine()) != null) {
                 StringBuilder tempLabel = new StringBuilder();
-                String[] temp = tempString.split(";");
-                //todo why get first
-                tempString = temp[0];
+                if (tempString.contains(";") && !tempString.contains("for")) {
+                    String[] temp = tempString.split(";");
+                    tempString = temp[0];
+                }
                 tempLabel.append("L").append(String.valueOf(line));
                 String lineLabel = tempLabel + ":" + tempString + "\r\n";
                 writer.write(lineLabel);

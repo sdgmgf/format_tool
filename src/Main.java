@@ -7,8 +7,17 @@ import java.util.ArrayList;
  */
 public class Main {
 
+    /**
+     * 程序文件
+     */
     private static final String PARAM_FILE_NAME = "src/file/LabelledProgram.txt";
+    /**
+     * 标记文件
+     */
     private static final String FUNCTION_FILE_NAME = "src/file/LabellingFunction.txt";
+    /**
+     * 结果
+     */
     private static final String FIRST_ORDER_LOGIC_FILE_NAME = "src/file/FirstOrderLogic.txt";
 
     /**
@@ -18,7 +27,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
         //label the program
         LabelObj lo = new LabelObj();
-        Boolean labelResult = lo.labellingFunction(PARAM_FILE_NAME, FUNCTION_FILE_NAME);
+        Boolean labelResult = lo.labellingProgram(PARAM_FILE_NAME, FUNCTION_FILE_NAME);
         if (!labelResult) {
             return;
         }

@@ -1,7 +1,7 @@
 pc = L1 ∧ pc' = L2 ∧ x=y=z=0
 pc = L2 ∧ pc' = L3 ∧ x=y+1
 pc = L3 ∧ pc' = L4 ∧ z=z+2
-pc = L4 ∧ pc' = L5 ∧ For(y
+pc = L4 ∧ pc' = L5 ∧ y;y<=3;y++
 pc = L6 ∧ pc' = L7 ∧ x<y
 pc = L6 ∧ pc' = L15 ∧ ¬(x<y)
 pc = L8 ∧ pc' = L9 ∧ x++
