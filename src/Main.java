@@ -5,7 +5,7 @@ import java.util.ArrayList;
  * @author xiaofei
  * @date 2017/11/01
  */
-public class main {
+public class Main {
 
     private static final String PARAM_FILE_NAME = "src/file/labelledProgram.txt";
     private static final String FUNCTION_FILE_NAME = "src/file/LabellingFunction.txt";
