@@ -32,7 +32,7 @@ public class ProgramCounter {
 		if(content.contains("¬")){
 			flag = false;
 		}
-		if(content.contains("(")){
+		if(content.contains("(") && content.contains(")")){
 			content = content.substring(content.indexOf("(") + 1, content.indexOf(")"));
 		}
 		while(true){

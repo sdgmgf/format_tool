@@ -8,30 +8,27 @@ import java.util.ArrayList;
 public class KeyHandler {
 
 	public ArrayList<Statement> statementListGenerator(String filename) throws IOException{
-        ArrayList<Statement> statementList = new ArrayList<>();
 		File file = new File(filename);
         BufferedReader reader;
         reader = new BufferedReader(new FileReader(file));
         String tempString;
-
+		ArrayList<Statement> statementList = new ArrayList<>();
         while ((tempString = reader.readLine()) != null) {
         	Statement stat = new Statement();
         	String[] temp = tempString.split(":");
         	stat.setLabel(temp[0]);
         	stat.setContent(temp[1]);
         	stat.setType();
-        	statementList.add(stat);
-        }
-        reader.close();     
-        statementExitLabelHandler(statementList);
-        for(Statement st : statementList){
-        	System.out.println(st.getLabel() + " " + st.getContent() + " " + st.getType() + " " + st.getExitLabel());
-        }
+			System.out.println(stat.getLabel() + " " + stat.getContent() + " " + stat.getType() + " " + stat.getExitLabel());
+			statementList.add(stat);
+		}
+		statementExitLabelHandler(statementList);
+		reader.close();
         return statementList;
 	}
 
 	public void statementExitLabelHandler(ArrayList<Statement> statementList){
-		for(int i = 0; i < statementList.size(); i++){
+		for (int i=0;i<statementList.size();i++) {
 			Statement st = statementList.get(i);
 			if("normal".equals(st.getType())){
 				st.setExitLabel("L" + (Integer)(Integer.parseInt(st.getLabel().substring(1))+1));
