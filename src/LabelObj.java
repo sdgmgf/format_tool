@@ -2,8 +2,12 @@ import java.io.*;
 
 public class LabelObj {
 
-	public void labellingFunction(String fileName, String labellingFunctionFileName) {
+	public Boolean labellingFunction(String fileName, String labellingFunctionFileName) {
         File oldFile = new File(fileName);
+        if (!oldFile.exists()) {
+            System.out.println("程序文件不存在");
+            return false;
+        }
         File labellingFunctionFile = new File(labellingFunctionFileName);
         BufferedReader reader = null;
         if (!labellingFunctionFile.exists()) {
@@ -22,7 +26,8 @@ public class LabelObj {
             while ((tempString = reader.readLine()) != null) {
             	StringBuilder tempLabel = new StringBuilder();
             	String[] temp = tempString.split(";");
-            	tempString = temp[0];//todo why get first
+                //todo why get first
+            	tempString = temp[0];
             	tempLabel.append("L").append(String.valueOf(line));
                 String lineLabel = tempLabel + ":" + tempString + "\r\n";
                 writer.write(lineLabel);
@@ -42,6 +47,7 @@ public class LabelObj {
                 }
             }
         }
-    }
+        return true;
+	}
 
 }

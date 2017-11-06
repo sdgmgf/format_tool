@@ -7,7 +7,7 @@ import java.util.ArrayList;
  */
 public class Main {
 
-    private static final String PARAM_FILE_NAME = "src/file/labelledProgram.txt";
+    private static final String PARAM_FILE_NAME = "src/file/LabelledProgram.txt";
     private static final String FUNCTION_FILE_NAME = "src/file/LabellingFunction.txt";
     private static final String FIRST_ORDER_LOGIC_FILE_NAME = "src/file/FirstOrderLogic.txt";
 
@@ -18,7 +18,10 @@ public class Main {
     public static void main(String[] args) throws IOException {
         //label the program
         LabelObj lo = new LabelObj();
-        lo.labellingFunction(PARAM_FILE_NAME, FUNCTION_FILE_NAME);
+        Boolean labelResult = lo.labellingFunction(PARAM_FILE_NAME, FUNCTION_FILE_NAME);
+        if (!labelResult) {
+            return;
+        }
         KeyHandler kh = new KeyHandler();
         //store all the labelled statement in an array list
         ArrayList<Statement> statementList = kh.statementListGenerator(FUNCTION_FILE_NAME);
